@@ -7,6 +7,7 @@ namespace PokeFilename.API
     {
         Default = 0,
         AnubisNamer = 1,
-        CustomNamer = 2,
+        YutuziNamer = 2,
+        CustomNamer = 3,
     }
 }

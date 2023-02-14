@@ -17,6 +17,7 @@ namespace PokeFilename.API
         public IFileNamer<PKM> Create() => Namer switch
         {
             EntityNamers.AnubisNamer => new AnubisNamer(),
+            EntityNamers.YutuziNamer => new YutuziNamer(),
             EntityNamers.CustomNamer => new CustomNamer(CustomPatternRegular, CustomPatternGameBoy),
             _ => new DefaultEntityNamer(),
         };
