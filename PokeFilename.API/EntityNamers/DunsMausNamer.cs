@@ -3,7 +3,7 @@ using System;
 
 namespace PokeFilename.API
 {
-    public sealed class YutuziNamer : IFileNamer<PKM>
+    public sealed class DunsMausNamer : IFileNamer<PKM>
     {
         public string GetName(PKM obj)
         {
@@ -21,6 +21,7 @@ namespace PokeFilename.API
             string nature = GetNature(pk);
             string formName = GetFormName(pk).Length > 0 ? $"-{GetFormName(pk)}" : string.Empty;
             string rareForm = GetRareForm(pk);
+            var chk = pk is ISanityChecksum s ? s.Checksum : PokeCrypto.GetCHK(pk.Data.AsSpan()[8..pk.SIZE_STORED]);
 
             string IVList = $"{pk.IV_HP}.{pk.IV_ATK}.{pk.IV_DEF}.{pk.IV_SPA}.{pk.IV_SPD}.{pk.IV_SPE}";
 
@@ -32,12 +33,12 @@ namespace PokeFilename.API
                 speciesName += "-Gmax";
 
             if (pk.IsEgg)
-                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm} ({ballFormatted}) {gender}{ability} - {nature} - {IVList} - {pk.OT_Name}";
+                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm} ({ballFormatted}) {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
 
             if (pk.IsNicknamed)
-                return $"{pk.Species:000}{form}{shinytype} - {pk.Nickname} [{speciesName}{formName}{rareForm} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name}";
+                return $"{pk.Species:000}{form}{shinytype} - {pk.Nickname} [{speciesName}{formName}{rareForm} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
             else
-                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm} [{speciesName}{formName} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name}";
+                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm}  [{speciesName}{formName} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
         }
 
         private static string GetShinyTypeString(PKM pk)
