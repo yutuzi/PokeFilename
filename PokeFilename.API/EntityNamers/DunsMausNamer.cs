@@ -33,12 +33,12 @@ namespace PokeFilename.API
                 speciesName += "-Gmax";
 
             if (pk.IsEgg)
-                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm} ({ballFormatted}) {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
+                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm} ({ballFormatted}) {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {pk.EncryptionConstant}";
 
             if (pk.IsNicknamed)
-                return $"{pk.Species:000}{form}{shinytype} - {pk.Nickname} [{speciesName}{formName}{rareForm} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
+                return $"{pk.Species:000}{form}{shinytype} - {pk.Nickname} [{speciesName}{formName}{rareForm} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {pk.EncryptionConstant}";
             else
-                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm}  [{speciesName}{formName} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {chk:X4}{pk.EncryptionConstant:X8}";
+                return $"{pk.Species:000}{form}{shinytype} - {speciesName}{formName}{rareForm}  [{speciesName}{formName} ({ballFormatted})] {gender}{ability} - {nature} - {IVList} - {pk.OT_Name} - {pk.EncryptionConstant}";
         }
 
         private static string GetShinyTypeString(PKM pk)
