@@ -18,7 +18,9 @@ namespace PokeFilename.API
         {
             EntityNamers.AnubisNamer => new AnubisNamer(),
             EntityNamers.YutuziNamer => new YutuziNamer(),
+            EntityNamers.YutuziSizeNamer => new YutuziSizeNamer(),
             EntityNamers.DunsMausNamer=> new DunsMausNamer(),
+            EntityNamers.BoxNamer => new BoxNamer(),
             EntityNamers.CustomNamer => new CustomNamer(CustomPatternRegular, CustomPatternGameBoy),
             _ => new DefaultEntityNamer(),
         };

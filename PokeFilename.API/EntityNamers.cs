@@ -8,7 +8,9 @@ namespace PokeFilename.API
         Default = 0,
         AnubisNamer = 1,
         YutuziNamer = 2,
-        DunsMausNamer = 3,
-        CustomNamer = 4,
+        YutuziSizeNamer = 3,
+        DunsMausNamer = 4,
+        BoxNamer = 5,
+        CustomNamer = 6,
     }
 }
